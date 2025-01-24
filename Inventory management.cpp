@@ -36,5 +36,20 @@ do{
 } while(choice!=3);
 return 0;
 }
+void addProduct() {
+    Product p;
+    cout << "Enter product ID: ";
+    cin >> p.id;
+    cout << "Enter product name: ";
+    cin.ignore();
+    getline(cin, p.name);
+    cout << "Enter product quantity: ";
+    cin >> p.quantity;
+    cout << "Enter product price: ";
+    cin >> p.price;
+
+    inventory.push_back(p);
+    cout << "Product added successfully.\n";
+}
 
 
