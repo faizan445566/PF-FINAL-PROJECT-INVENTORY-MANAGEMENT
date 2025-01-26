@@ -94,6 +94,9 @@ void loadFromFile() {
         cout << "No file found. Starting fresh.\n";
         return;
     }
-
+string line;
+    while (getline(file, line)) {
+        Product p;
+        size_t pos = 0;
              
 
