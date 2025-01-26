@@ -142,5 +142,5 @@ int parseInt(const sing& str) {
             result += (str[i] - '0') * far;
         }
     }
-    return relt;
+    return result;
 }
