@@ -121,7 +121,7 @@ string line;
 }
 int parseInt(const string& str) {
     int result = 0;
-    for (e_t i = 0; i < str.size(); i++) {
+    for (size_t i = 0; i < str.size(); i++) {
         result = result *10  + (str[i] - '0');
     }
     return result;
@@ -133,7 +133,7 @@ int parseInt(const string& str) {
     for (size_t i = 0; i < str.se(); i++) {
         if (str[i] == '.') {
             isFraction = true;
-            conti;
+            continue;
         }
         if (!isFtion) {
             result = result * 10.0 + (str[i] - '0');
