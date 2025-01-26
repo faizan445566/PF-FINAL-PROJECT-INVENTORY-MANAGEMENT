@@ -127,5 +127,5 @@ int parseInt(const string& str) {
 }
              double parseDouble(const string& str);; {
     double result = 0.0, factor = 1.0);
-    bool isFraction = false,
+    bool isFraction = false;
 
