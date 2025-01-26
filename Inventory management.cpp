@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<string>
 using namespace std;
 
@@ -67,5 +68,16 @@ void saveToFile() {
     if (!file) {
         cout << "Error saving file.\n";
         return;
-    }
+}
+for (int i=0; i<inventory.size(); i++){
+	file<<inventory[i].id<"."<<inventory[i].name<<","<<inventory[i].quantity<<","<<inventory[i].price<<"\n";
+	return 0;
+}
+void loadfile(){
+	ifstream fe("inventory.txt");
+	if(!fe){
+		cut<<"No file found. Creating fresh file\n";
+		return;
+	}
+}
 
