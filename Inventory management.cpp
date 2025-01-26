@@ -135,11 +135,11 @@ int parseInt(const string& str) {
             isFraction = true;
             continue;
         }
-        if (!isFtion) {
+        if (!isFraction) {
             result = result * 10.0 + (str[i] - '0');
         } else {
             factor *= 0.1;
-            result += (str[i] - '0') * far;
+            result += (str[i] - '0') * factor;
         }
     }
     return result;
