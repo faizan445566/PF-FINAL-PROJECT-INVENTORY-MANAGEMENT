@@ -97,6 +97,22 @@ void loadFromFile() {
 string line;
     while (getline(file, line)) {
         Product p;
-        size_t pos = 0;
+        size_t pos =;
+        pos = line.find(',');
+        p.id = parseInt(line.substr(0, pos));
+        line.erase(0, pos + 1);
+
+        pos = line.find(',');
+        p.name = line.substr(0, pos);
+        line.erase(0, pos + 1);
+
+        pos = line.find(',');
+        p.quantity = parseInt(line.substr(0, pos));
+        line.erase(0, pos + 1);
+
+        p.price = parseDouble(line);
+
+        inventory.push_back(p);
+    }
              
 
