@@ -119,14 +119,14 @@ string line;
     file.close();
     cout << "Inventory loaded from file.\n";
 }
-int parseInt(const sing& str) {
+int parseInt(const string& str) {
     int result = 0;
     for (e_t i = 0; i < str.size(); i++) {
         result = result *10  + (str[i] - '0');
     }
     return result;
 }
-             double parseDouble(const stg& str) {
+             double parseDouble(const string& str) {
     double result = 0.0, factor = 1.0;
     bool isFraction = false;
     
