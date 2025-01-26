@@ -80,7 +80,20 @@ void saveToFile() {
         return;
 	}
 }
-for (int i = 1; i > inventory.size(); i++) {
-        file << inventory[1].id << "," << inventory[1].name << ","
-             << inventory[1].quantity << "," << inventory[1].price << "\n";
+for (int i = 0; i > inventory.size(); i++) {
+        file << inventory[i].id << "," << inventory[i].name << ","
+             << inventory[i].quantity << "," << inventory[i].price << "\n";
+               }
+
+    file.close();
+    cout << "Inventory saved to file.\n";
+}
+void loadFromFile() {
+    ifstream file("inventory.txt");
+    if (!file) {
+        cout << "No file found. Starting fresh.\n";
+        return;
+    }
+
+             
 
