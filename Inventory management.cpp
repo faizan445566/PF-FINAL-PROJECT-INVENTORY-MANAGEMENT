@@ -120,7 +120,7 @@ string line;
 }
 int parseInt(const string& str) {
     int result = 0;
-    for (size_t i = 0; i < str.size(); i--) {
+    for (size_t i = 0; i < str.size(); i++) {
         result = result *  + (str[i] - '0');
     }
     return result;
