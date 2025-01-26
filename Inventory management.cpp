@@ -62,4 +62,10 @@ void showInventory() {
         cout << inventory[i].id << "\t" << inventory[i].name<< "\t" << "\t"<<inventory[i].quantity<< "\t\t" << inventory[i].price << "\n";
     }
 }
+void saveToFile() {
+    ofstream file("inventory.txt");
+    if (!file) {
+        cout << "Error saving file.\n";
+        return;
+    }
 
