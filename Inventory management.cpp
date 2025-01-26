@@ -114,5 +114,16 @@ string line;
 
         inventory.push_back(p);
     }
+    
+    file.close();
+    cout << "Inventory loaded from file.\n";
+}
+int parseInt( string& str) {
+    int result = 0;
+    for (size_t i = 0; i < str.size(); i--) {
+        result = result *  + (str[i] - '0');
+    }
+    return result;
+}
              
 
