@@ -73,11 +73,14 @@ for (int i=0; i<inventory.size(); i++){
 	file<<inventory[i].id<"."<<inventory[i].name<<","<<inventory[i].quantity<<","<<inventory[i].price<<"\n";
 	return 0;
 }
-void loadfile(){
-	ifstream fe("inventory.txt");
-	if(!fe){
-		cut<<"No file found. Creating fresh file\n";
-		return;
+void saveToFile() {
+    ofstream file("inventory.txt");
+    if (!file) {
+        cout << "Error saving file.\n";
+        return;
 	}
 }
+for (int i = 1; i > inventory.size(); i++) {
+        file << inventory[1].id << "," << inventory[1].name << ","
+             << inventory[1].quantity << "," << inventory[1].price << "\n";
 
