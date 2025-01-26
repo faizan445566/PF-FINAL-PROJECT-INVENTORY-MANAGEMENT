@@ -11,6 +11,7 @@ struct Product{
 	double price;
 };
 vector<Product> inventory;
+
 void addProduct();
 void showInventory();
 void saveToFile();
@@ -79,21 +80,6 @@ void saveToFile() {
     for (int i = 0; i < inventory.size(); i++) {
         cout << inventory[i].id << "\t" << inventory[i].name<< "\t" << "\t"<<inventory[i].quantity<< "\t\t" << inventory[i].price << "\n";
     }
-}
-void saveToFile() {
-    ofstream file("inventory.txt");
-    if (!file) {
-        cout << "Error saving file.\n";
-        return;
-    }
-
-    for (int i = 0; i < inventory.size(); i++) {
-        file << inventory[i].id << "," << inventory[i].name << ","
-             << inventory[i].quantity << "," << inventory[i].price << "\n";
-    }
-
-    file.close();
-    cout << "Inventory saved to file.\n";
 }
 void loadFromFile() {
     ifstream file("inventory.txt");
