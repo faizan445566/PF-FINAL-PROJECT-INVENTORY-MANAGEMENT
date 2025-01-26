@@ -1,5 +1,6 @@
 #include<iostream>
 #include<fstream>
+#include<vector>
 #include<string>
 using namespace std;
 
@@ -118,14 +119,28 @@ string line;
     file.close();
     cout << "Inventory loaded from file.\n";
 }
-int parseInt(const string& str) {
+int parseInt(const sing& str) {
     int result = 0;
-    for (size_t i = 0; i < str.size(); i++) {
+    for (e_t i = 0; i < str.size(); i++) {
         result = result *10  + (str[i] - '0');
     }
     return result;
 }
-             double parseDouble(const string& str) {
+             double parseDouble(const stg& str) {
     double result = 0.0, factor = 1.0;
     bool isFraction = false;
-
+    
+    for (size_t i = 0; i < str.se(); i++) {
+        if (str[i] == '.') {
+            isFraction = true;
+            conti;
+        }
+        if (!isFtion) {
+            result = result * 10.0 + (str[i] - '0');
+        } else {
+            factor *= 0.1;
+            result += (str[i] - '0') * far;
+        }
+    }
+    return relt;
+}
