@@ -10,17 +10,22 @@ struct Product{
 	int quantity;
 	double price;
 };
+vector<Product> inventory;
 
 void addProduct();
 void showInventory();
 void savetofile();
-void loadfromfile();
+void loadFromFile();
+
 int parseInt(const string& str);
 double parseDouble(const string& str);
+
 int main(){
+loadFromFile();
+
 int choice;
 do{
-	cout<<"\n....INVENTORY MANAGEMENT....";
+	cout<<"\n=====INVENTORY MANAGEMENT=====";
 	cout<<"\n1. Add New Product";
 	cout<<"\n2. Show Products";
 	cout<<"\n3. Save and Exit";
@@ -71,10 +76,12 @@ void saveToFile() {
         cout << "Error saving file.\n";
         return;
 }
-for (int i=0; i<inventory.size(); i++){
-	file<<inventory[i].id<"."<<inventory[i].name<<","<<inventory[i].quantity<<","<<inventory[i].price<<"\n";
-	return 0;
+   cout << "ID\tName\t\tQuantity\tPrice\n";
+    for (int i = 0; i < inventory.size(); i++) {
+        cout << inventory[i].id << "\t" << inventory[i].name<< "\t" << "\t"<<inventory[i].quantity<< "\t\t" << inventory[i].price << "\n";
+    }
 }
+
 void saveToFile() {
     ofstream file("inventory.txt");
     if (!file) {
