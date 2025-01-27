@@ -14,6 +14,7 @@ vector<Product> inventory;
 
 void addProduct();
 void showInventory();
+void editProduct();
 void saveToFile();
 void loadFromFile();
 
@@ -28,20 +29,23 @@ do{
 	cout<<"\n=====INVENTORY MANAGEMENT=====";
 	cout<<"\n1. Add New Product";
 	cout<<"\n2. Show Products";
-	cout<<"\n3. Save and Exit";
-	cout<<"\n Enter Your Choice";
+	cout<<"\n3. Edit Product";
+	cout<<"\n4. Save and Exit";
+	cout<<"\n Enter Your Choice: ";
 	cin>>choice;
 	switch(choice){
 		case 1: addProduct();
 		break;
 		case 2: showInventory();
 		break;
-		case 3: saveToFile();
+		case 3: editProduct();
+		break;
+		case 4: saveToFile();
 		break;
 		default:
 			cout<<"Enter Correct Choice";
 	}
-} while(choice!=3);
+} while(choice!=4);
 return 0;
 }
 void addProduct() {
@@ -70,17 +74,52 @@ void showInventory() {
         cout << inventory[i].id << "\t" << inventory[i].name<< "\t" << "\t"<<inventory[i].quantity<< "\t\t" << inventory[i].price << "\n";
     }
 }
+void editProduct() {
+    if (inventory.empty()) {
+        cout << "Inventory is empty. Nothing to edit.\n";
+        return;
+    }
+
+    int id;
+    cout << "Enter the product ID to edit: ";
+    cin >> id;
+
+    for (size_t i = 0; i < inventory.size(); ++i) {
+        if (inventory[i].id == id) {
+            cout << "Product found. Enter new details:\n";
+            cout << "Enter new name (current: " << inventory[i].name << "): ";
+            cin.ignore();
+            getline(cin, inventory[i].name);
+            cout << "Enter new quantity (current: " << inventory[i].quantity << "): ";
+            cin >> inventory[i].quantity;
+            cout << "Enter new price (current: " << inventory[i].price << "): ";
+            cin >> inventory[i].price;
+            cout << "Product updated successfully.\n";
+            return;
+        }
+    }
+    cout << "Product with ID " << id << " not found.\n";
+}
 void saveToFile() {
     ofstream file("inventory.txt");
     if (!file) {
         cout << "Error saving file.\n";
         return;
+    }
+
+    for (size_t i = 0; i < inventory.size(); ++i) {
+    file << inventory[i].id << ',' << inventory[i].name << ',' << inventory[i].quantity << ',' << inventory[i].price << '\n';
 }
+
+    file.close();
+    cout << "Inventory saved to file.\n";
+
    cout << "ID\tName\t\tQuantity\tPrice\n";
     for (int i = 0; i < inventory.size(); i++) {
         cout << inventory[i].id << "\t" << inventory[i].name<< "\t" << "\t"<<inventory[i].quantity<< "\t\t" << inventory[i].price << "\n";
     }
 }
+   
 void loadFromFile() {
     ifstream file("inventory.txt");
     if (!file) {
