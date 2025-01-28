@@ -2,6 +2,7 @@
 #include<fstream>
 #include<vector>
 #include<string>
+#include<limits>
 using namespace std;
 
 struct Product{
@@ -32,7 +33,12 @@ do{
 	cout<<"\n3. Edit Product";
 	cout<<"\n4. Save and Exit";
 	cout<<"\n Enter Your Choice: ";
-	cin>>choice;
+	if (!(cin >> choice)) {
+            cout << "Invalid input. Please enter a number.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 	switch(choice){
 		case 1: addProduct();
 		break;
@@ -51,14 +57,26 @@ return 0;
 void addProduct() {
     Product p;
     cout << "Enter product ID: ";
-    cin >> p.id;
+    while (!(cin >> p.id)) {
+        cout << "Invalid ID. Please enter an integer: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     cout << "Enter product name: ";
     cin.ignore();
     getline(cin, p.name);
     cout << "Enter product quantity: ";
-    cin >> p.quantity;
+    while (!(cin >> p.quantity)) {
+        cout << "Invalid quantity. Please enter an integer: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    }
     cout << "Enter product price: ";
-    cin >> p.price;
+    while (!(cin >> p.price)) {
+        cout << "Invalid price. Please enter a numeric value: ";
+        cin.clear(); 
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
 
     inventory.push_back(p);
     cout << "Product added successfully.\n";
@@ -82,7 +100,11 @@ void editProduct() {
 
     int id;
     cout << "Enter the product ID to edit: ";
-    cin >> id;
+    while (!(cin >> id)) {
+        cout << "Invalid ID. Please enter an integer: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    }
 
     for (size_t i = 0; i < inventory.size(); ++i) {
         if (inventory[i].id == id) {
@@ -91,9 +113,18 @@ void editProduct() {
             cin.ignore();
             getline(cin, inventory[i].name);
             cout << "Enter new quantity (current: " << inventory[i].quantity << "): ";
-            cin >> inventory[i].quantity;
+            while (!(cin >> inventory[i].quantity)) {
+                cout << "Invalid quantity. Please enter an integer: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            }
             cout << "Enter new price (current: " << inventory[i].price << "): ";
-            cin >> inventory[i].price;
+            
+			while (!(cin >> inventory[i].price)) {
+                cout << "Invalid price. Please enter a numeric value: ";
+                cin.clear(); 
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            }
             cout << "Product updated successfully.\n";
             return;
         }
